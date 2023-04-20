@@ -60,17 +60,45 @@ liveController.tagGet = async function (req, res) {
   }
 };
 
-liveController.tagDelete = async function (req, res) {
+liveController.TagDelete = async function (req, res) {
   try {
     const tag = await tagModel.findByIdAndDelete(req.params.id);
     if (!req.params.id) {
       return res.status(400).send();
     }
-    res.send(tag);
+    return res.status(200).send({
+      success: true,
+      data: tag + "successfully Delete",
+    });
+    // res.send(tag);
   } catch (err) {
     return res.status(500).send({
       success: false,
       msg: err + "error in delete API",
+    });
+  }
+};
+
+liveController.TagUpdate = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, description, keyword, meta_description } = req.body;
+    const tag = await tagModel.findByIdAndUpdate(
+      id,
+      { ...req.body },
+      { new: true }
+    );
+    return res.status(200).send({
+      success: true,
+      message: "Blog Updated",
+      tag,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send({
+      success: false,
+      message: "Error while updating Blog",
+      err,
     });
   }
 };

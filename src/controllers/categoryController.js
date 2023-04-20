@@ -4,7 +4,7 @@ const liveController = {};
 //add category
 liveController.categoryAdd = async function (req, res) {
   try {
-    const { name, description, word, newWord, meta_title, meta_description } =
+    const { name, description, newWord, meta_title, meta_description } =
       req.body;
     console.log(req.body, "reqqqqq");
     // if (

@@ -12,7 +12,6 @@ const categorySchema = new mongoose.Schema(
     },
     word: {
       type: String,
-      required: true,
     },
     newWord: {
       type: String,

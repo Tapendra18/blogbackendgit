@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use("/api/v1", routes);
 app.use("/uploads", express.static("./uploads"));
 //PORT
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8002;
 
 app.listen(PORT, () => {
   console.log(`server Running on ${process.env.DEV_MODE} port no ${PORT}`);
